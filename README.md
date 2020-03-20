@@ -599,10 +599,12 @@ Other Style Guides
     ```
 
   <a name="es6-template-literals"></a><a name="6.4"></a>
-  - [6.3](#es6-template-literals) When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](https://eslint.org/docs/rules/prefer-template.html) [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
+  - [6.3](#es6-template-literals) [TO BE CHANGED] When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](https://eslint.org/docs/rules/prefer-template.html) [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
 
-    > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
-
+    > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features. <br>
+    
+    > [Why to change?] No improved readability, and it feels unnnatural.
+    
     ```javascript
     // bad
     function sayHi(name) {
@@ -647,9 +649,11 @@ Other Style Guides
 ## Functions
 
   <a name="functions--declarations"></a><a name="7.1"></a>
-  - [7.1](#functions--declarations) Use named function expressions instead of function declarations. eslint: [`func-style`](https://eslint.org/docs/rules/func-style)
+  - [7.1](#functions--declarations) [TO BE CHANGED] Use named function expressions instead of function declarations. eslint: [`func-style`](https://eslint.org/docs/rules/func-style)
 
-    > Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to explicitly name the expression, regardless of whether or not the name is inferred from the containing variable (which is often the case in modern browsers or when using compilers such as Babel). This eliminates any assumptions made about the Error’s call stack. ([Discussion](https://github.com/airbnb/javascript/issues/794))
+    > Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to explicitly name the expression, regardless of whether or not the name is inferred from the containing variable (which is often the case in modern browsers or when using compilers such as Babel). This eliminates any assumptions made about the Error’s call stack. ([Discussion](https://github.com/airbnb/javascript/issues/794)) <br>
+    
+    > [Why to change?] Too long. Functions should be defined at the beggining of the file anyway.
 
     ```javascript
     // bad
@@ -995,9 +999,10 @@ Other Style Guides
     ```
 
   <a name="arrows--paren-wrap"></a><a name="8.3"></a>
-  - [8.3](#arrows--paren-wrap) In case the expression spans over multiple lines, wrap it in parentheses for better readability.
+  - [8.3](#arrows--paren-wrap) [TO BE CHANGED] In case the expression spans over multiple lines, wrap it in parentheses for better readability.
 
-    > Why? It shows clearly where the function starts and ends.
+    > Why? It shows clearly where the function starts and ends. <br>
+    > [Why to change?] No added readability. Example is a bit unfair, since it's the new line that actually improves readability.
 
     ```javascript
     // bad
@@ -1312,10 +1317,10 @@ Other Style Guides
     ```
 
   <a name="modules--no-wildcard"></a><a name="10.2"></a>
-  - [10.2](#modules--no-wildcard) Do not use wildcard imports.
+  - [10.2](#modules--no-wildcard) [TO BE CHANGED] Do not use wildcard imports.
 
-    > Why? This makes sure you have a single default export.
-
+    > Why? This makes sure you have a single default export. <br>
+    > [Why to change?] I’ve encountered cases when this was required to make js libraries would work with Angular 2+
     ```javascript
     // bad
     import * as AirbnbStyleGuide from './AirbnbStyleGuide';
@@ -1409,10 +1414,12 @@ Other Style Guides
     ```
 
   <a name="modules--multiline-imports-over-newlines"></a>
-  - [10.8](#modules--multiline-imports-over-newlines) Multiline imports should be indented just like multiline array and object literals.
+  - [10.8](#modules--multiline-imports-over-newlines) [TO BE CHANGED] Multiline imports should be indented just like multiline array and object literals.
  eslint: [`object-curly-newline`](https://eslint.org/docs/rules/object-curly-newline)
 
-    > Why? The curly braces follow the same indentation rules as every other curly brace block in the style guide, as do the trailing commas.
+    > Why? The curly braces follow the same indentation rules as every other curly brace block in the style guide, as do the trailing commas. <br>
+    > [Why to change?] Introduces a lot of scroll in big projects and without any benefits. Once you added a module you either leave it there or in worst case search for it 1 time and delete it. Readability adds nothing in this case, since you won’t look for modules but search for them by name.
+
 
     ```javascript
     // bad
@@ -1465,9 +1472,11 @@ Other Style Guides
 ## Iterators and Generators
 
   <a name="iterators--nope"></a><a name="11.1"></a>
-  - [11.1](#iterators--nope) Don’t use iterators. Prefer JavaScript’s higher-order functions instead of loops like `for-in` or `for-of`. eslint: [`no-iterator`](https://eslint.org/docs/rules/no-iterator.html) [`no-restricted-syntax`](https://eslint.org/docs/rules/no-restricted-syntax)
+  - [11.1](#iterators--nope) [TO BE CHANGED] Don’t use iterators. Prefer JavaScript’s higher-order functions instead of loops like `for-in` or `for-of`. eslint: [`no-iterator`](https://eslint.org/docs/rules/no-iterator.html) [`no-restricted-syntax`](https://eslint.org/docs/rules/no-restricted-syntax)
 
-    > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.
+    > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects. <br>
+    
+    > [Why to change?] Classic for loops have ‘break’ statement
 
     > Use `map()` / `every()` / `filter()` / `find()` / `findIndex()` / `reduce()` / `some()` / ... to iterate over arrays, and `Object.keys()` / `Object.values()` / `Object.entries()` to produce arrays so you can iterate over objects.
 
@@ -2166,8 +2175,10 @@ Other Style Guides
     ```
 
   <a name="blocks--cuddled-elses"></a><a name="16.2"></a>
-  - [16.2](#blocks--cuddled-elses) If you’re using multiline blocks with `if` and `else`, put `else` on the same line as your `if` block’s closing brace. eslint: [`brace-style`](https://eslint.org/docs/rules/brace-style.html)
-
+  - [16.2](#blocks--cuddled-elses) [TO BE CHANGED[ If you’re using multiline blocks with `if` and `else`, put `else` on the same line as your `if` block’s closing brace. eslint: [`brace-style`](https://eslint.org/docs/rules/brace-style.html) <br>
+  
+  > [Why to change?] Improves readability 
+  
     ```javascript
     // bad
     if (test) {
@@ -2679,8 +2690,11 @@ Other Style Guides
     ```
 
   <a name="whitespace--padded-blocks"></a><a name="18.8"></a>
-  - [19.8](#whitespace--padded-blocks) Do not pad your blocks with blank lines. eslint: [`padded-blocks`](https://eslint.org/docs/rules/padded-blocks.html)
-
+  - [19.8](#whitespace--padded-blocks) [TO BE CHANGED] Do not pad your blocks with blank lines. eslint: [`padded-blocks`](https://eslint.org/docs/rules/padded-blocks.html) <br>
+    
+    > [Why to be changed?]  Leaving a empty line at the beggining of function/class declaration
+ improves readability.
+ 
     ```javascript
     // bad
     function bar() {
