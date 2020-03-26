@@ -3379,7 +3379,7 @@ Other Style Guides
     import CheckBox from './CheckBox'; // PascalCase export/import/filename
     import fortyTwo from './fortyTwo'; // camelCase export/import/filename
     import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
-    // ^ supports both insideDirectory.js and insideDirectory/index.js
+    // ^ supports both insideDirectory.js and insideDirectory/stylelint.config.js
     ```
 
   <a name="naming--camelCase-default-export"></a><a name="22.7"></a>
